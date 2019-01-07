@@ -28,7 +28,7 @@ source $roomba_dir
 # which contains test3
 # You can check the .cleanup example.
 
-roombash_do_cleanup
+roombash_cleanup
 
 # Here goes your code
 
@@ -43,4 +43,8 @@ echo "scp -r $dir user@server.ssh.com:~/path/to/upload"
 sleep 5
 
 # Now we let Roomba undo the changes it has done.
-roombash_undo_cleanup
+# Notice not everything will go back to normal. If a normal directory was specified, 
+# this directory has been completely erased and RoombaSH does not restore it.
+# If you want it to be restored, there are ther ways you can accomplish this
+# from within the .cleanup file
+roombash_restore

@@ -9,7 +9,7 @@ function roombash_on_load() {
     echo "RoombaSH has loaded correctly"
 }
 
-function roombash_do_cleanup() {
+function roombash_cleanup() {
 
     if [ ! -f ".cleanup" ]; then
         echo ".cleanup not found. Creating..."
@@ -71,7 +71,7 @@ function roombash_do_cleanup() {
     done
 }
 
-function roombash_undo_cleanup() {
+function roombash_restore() {
 
     for FILE in ./cleanup_storage/*; do
         echo "Moving "$FILE" back."
