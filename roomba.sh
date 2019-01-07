@@ -21,6 +21,7 @@ function roombash_do_cleanup() {
     mkdir "cleanup_storage"
     for FILE in $FILES; do
         UNCLEAN=0
+        ALL_IN=0
         if [[ ${FILE:0:1} == "!" ]]; then
             echo "IGNORE::$FILE"
             continue
@@ -31,10 +32,16 @@ function roombash_do_cleanup() {
             echo "NEW FILE NAME: $FILE"
             let UNCLEAN=1
         fi
+        if [[ ${FILE:0:1} = ">" ]]; then
+            echo "ALL_IN::$FILE"
+            FILE=${FILE#">"}
+            echo "NEW FILE NAME: $FILE"
+            let ALL_IN=1
+        fi
+        DIR=$(dirname "$FILE")
+        echo "DIRECTORY::$DIR"
         if [ -f $FILE ]; then
             echo "Saving File::"$FILE""
-            DIR=$(dirname "$FILE")
-            echo "DIRECTORY::$DIR"
             echo "" >> $FILE
             echo "$DIR" >> $FILE
             if [ "$UNCLEAN" -eq 1 ]; then
@@ -50,7 +57,14 @@ function roombash_do_cleanup() {
             fi
         elif [ -d $FILE ]; then
             echo "Removing Directory::"$FILE"";
-            rm -r $FILE
+            if [ "$ALL_IN" -eq 1 ]; then
+                INFO_FILE="$FILE/.cleanupinfo"
+                touch $INFO_FILE
+                echo "$DIR" >> $INFO_FILE
+                mv -v -f $FILE "cleanup_storage/"
+            else 
+                rm -r $FILE
+            fi
         else
             echo "Can't find "$FILE""
         fi
@@ -63,6 +77,13 @@ function roombash_undo_cleanup() {
         echo "Moving "$FILE" back."
         file_name=$(basename "$FILE")
         if [[ ${file_name:0:1} == "^" ]]; then
+            continue;
+        fi
+        if [[ -d $FILE ]]; then
+            INFO_FILE="$FILE/.cleanupinfo"
+            PREV_PATH=$(cat $INFO_FILE)
+            rm $INFO_FILE
+            mv -v -f $FILE $PREV_PATH
             continue;
         fi
         # We obtain the previous path from the file
