@@ -1,0 +1,7 @@
+test1.txt
+tests/test2.txt
+tests/remove_this_dir/
+tests/remove_this_folder/test4
+tests/remove_this_folder/
+tests/this/does/not/exist.txt
+!tests/ignore.txt
