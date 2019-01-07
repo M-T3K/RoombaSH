@@ -15,7 +15,7 @@ Then it perfoms the cleanup with the function **roombash_cleanup** (aka cleanup 
 
 ## Structure of the CleanUp file
 
-This is the structure that your **.cleanup** file should follow:
+This is the structure that your **.cleanup** file should follow. You should also take a look at the usage example file [.cleanup](https://github.com/M-T3K/RoombaSH/blob/master/.cleanup).
 
 - **PATH/TO/FILE**. Examples:
     - **file.txt** : This will store **file.txt** for cleanup.
