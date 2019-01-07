@@ -23,8 +23,8 @@ It also supports comments using the **!** symbol. Any line commented will be aut
         - `folder/folder2/`
         - This will save **save_this.txt** upon cleanup and delete `folder/folder2/`. However, when **roombash_undo_cleanup** is called, `folder/folder2/` will be created again, since it is necessary for `folder/folder2/save_this.txt`. All other files won't be there.
 - **Comments**: Everything marked with **!** is ignored during cleanup.
+- **Unclean Annotation**: Everything marked with **^** is ignored during **undo_cleanup** (but is still taken care of during **do_cleanup**).
 
 ## Improvements
 
 - Have an option to mark all the files in a folder for CleanUp in just one line.
-- Have an option to mark a file for CleanUp but not **undo_cleanup**.

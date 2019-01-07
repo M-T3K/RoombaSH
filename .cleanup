@@ -5,3 +5,4 @@ tests/remove_this_folder/test4
 tests/remove_this_folder/
 tests/this/does/not/exist.txt
 !tests/ignore.txt
+!^tests/unclean.txt
