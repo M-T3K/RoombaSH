@@ -60,6 +60,9 @@ function roombash_cleanup() {
             if [ "$ALL_IN" -eq 1 ]; then
                 INFO_FILE="$FILE/.cleanupinfo"
                 touch $INFO_FILE
+                if [ "$UNCLEAN" -eq 1 ]; then
+                    DIR="^${DIR}"
+                fi
                 echo "$DIR" >> $INFO_FILE
                 mv -v -f $FILE "cleanup_storage/"
             else 
@@ -77,11 +80,15 @@ function roombash_restore() {
         echo "Moving "$FILE" back."
         file_name=$(basename "$FILE")
         if [[ ${file_name:0:1} == "^" ]]; then
-            continue;
+            continue
         fi
         if [[ -d $FILE ]]; then
             INFO_FILE="$FILE/.cleanupinfo"
             PREV_PATH=$(cat $INFO_FILE)
+            if [ "${PREV_PATH:0:1}" == "^" ]; then
+                echo "$FILE is UNCLEAN. Not Restoring."
+                continue
+            fi
             rm $INFO_FILE
             mv -v -f $FILE $PREV_PATH
             continue;
