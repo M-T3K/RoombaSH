@@ -31,11 +31,11 @@ This is the structure that your **.cleanup** file should follow. You should also
 - **Comments**: Everything marked with **!** is ignored during cleanup.
 - **Unclean Annotation**: Expressed by a **^**, an unclean annotation specifies that a file or directory should be cleaned up but not restored.
 - **Deep Annotation**: If **>** is in front of a directory in **.cleanup**, it means that the entire directory (including its contents) should be put up for cleanup.
-- **Combining Annotations**: Unclean and Deep Annotations can be combined. To do so, you must type **^>**. This means that the directory is **Deeply Unclean**. Note that **>^** does not work, as it means that a directory starts with **^**.
+- **Combining Annotations**: Unclean and Deep Annotations can be combined. To do so, you must type **^>**. This means that the directory is **Deeply Unclean**. Note that **>^** does not work, as they are not the same thing. 
 
 ## Improvements
 
-Increase code Readability.
+Improve code Readability.
 
 ## Known Issues
 
