@@ -4,7 +4,7 @@ A simple, 1 file, cleaner written in BASH.
 
 ## Story
 
-The first version of RoombaSH was a small script that automatically uploaded an entire folder throuh ssh for one of my classes. After that, I started helping people and before I realized, my folder was full of files that weren't part of my homework, so uploading my stuff became tedius. I decided it was time to improve the uploading script, and RoombaSH was born.
+The first version of RoombaSH was a small script that automatically uploaded an entire folder throuh ssh for one of my classes. After that, I started helping people and before I realized it, my folder was full of files that weren't part of my homework, so uploading became tedious (couldn't upload an entire folder anymore and had to go 1 file at a time) . I decided it was time to improve the uploading script, and RoombaSH was born.
 
 ## How it works
 
