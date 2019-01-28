@@ -1,6 +1,6 @@
 # RoombaSH
 
-A simple, 1 file, cleaner written in BASH.
+A simple, 1 file cleaner, written in BASH.
 
 ## Story
 
